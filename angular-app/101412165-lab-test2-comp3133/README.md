@@ -79,7 +79,7 @@ This project uses the SpaceX API v3:
 
 ## Author
 
-[Your Name]
+Shyam Patel
 
 ## License
 
