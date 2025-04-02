@@ -1,19 +1,22 @@
 {
   "version": 2,
+  "public": true,
   "builds": [
     {
-      "src": "dist/101412165-lab-test2-comp3133/browser/**",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/101412165-lab-test2-comp3133/browser"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "handle": "filesystem"
     },
     {
-      "src": "/(.*).(js|css|ico|json|png|jpg|jpeg|svg|gif)",
-      "dest": "/$1.$2"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
