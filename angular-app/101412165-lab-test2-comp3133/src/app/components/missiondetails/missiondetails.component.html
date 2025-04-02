@@ -1,1 +1,64 @@
-<p>missiondetails works!</p>
+<div class="mission-details-container">
+  @if (mission) {
+    <mat-card class="details-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img [src]="mission.links.mission_patch_small" alt="Mission Patch" class="mission-patch">
+        </div>
+        <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+        <mat-card-subtitle>Flight #{{ mission.flight_number }} - {{ mission.launch_year }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="detail-section">
+          <h3>Mission Details</h3>
+          <p>{{ mission.details || 'No details available' }}</p>
+        </div>
+
+        <div class="detail-section">
+          <h3>Launch Information</h3>
+          <p><strong>Launch Site:</strong> {{ mission.launch_site.site_name_long }}</p>
+          <p><strong>Launch Date:</strong> {{ mission.launch_date_utc | date:'medium' }}</p>
+          <p><strong>Launch Success:</strong> 
+            <span [class.success]="mission.launch_success" [class.failure]="!mission.launch_success">
+              {{ mission.launch_success ? 'Successful' : 'Failed' }}
+            </span>
+          </p>
+        </div>
+
+        <div class="detail-section">
+          <h3>Rocket Information</h3>
+          <p><strong>Rocket Name:</strong> {{ mission.rocket.rocket_name }}</p>
+          <p><strong>Rocket Type:</strong> {{ mission.rocket.rocket_type }}</p>
+        </div>
+
+        <div class="detail-section">
+          <h3>Links</h3>
+          <div class="links-container">
+            <a [href]="mission.links.article_link" target="_blank" mat-button>
+              <mat-icon>article</mat-icon> Article
+            </a>
+            <a [href]="mission.links.wikipedia" target="_blank" mat-button>
+              <mat-icon>language</mat-icon> Wikipedia
+            </a>
+            <a [href]="mission.links.video_link" target="_blank" mat-button>
+              <mat-icon>play_circle</mat-icon> Video
+            </a>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Back to List
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    <mat-card>
+      <mat-card-content>
+        <p>Loading mission details...</p>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

@@ -1,12 +1,35 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatToolbarModule,
+    HttpClientModule
+  ],
+  template: `
+    <mat-toolbar color="primary">
+      <span>SpaceX Missions</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  `,
+  styles: [`
+    :host {
+      display: block;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+    mat-toolbar {
+      margin-bottom: 20px;
+    }
+  `]
 })
 export class AppComponent {
-  title = '101412165-lab-test2-comp3133';
+  title = 'SpaceX Missions';
 }

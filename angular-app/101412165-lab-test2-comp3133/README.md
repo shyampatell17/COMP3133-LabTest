@@ -1,59 +1,86 @@
-# 101412165LabTest2Comp3133
+# SpaceX Mission Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+This Angular application displays information about SpaceX launches using the SpaceX API. Users can view a list of missions, filter them by launch year, and see detailed information about each mission.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- View all SpaceX missions
+- Filter missions by launch year
+- View detailed information about each mission
+- Responsive Material Design UI
+- Links to articles, Wikipedia pages, and launch videos
 
+## Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd 101412165-lab-test2-comp3133
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the development server:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Open your browser and navigate to `http://localhost:4200`
 
-## Code scaffolding
+## Build
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To build the project for production:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Technologies Used
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Angular 17
+- Angular Material
+- SpaceX API
+- TypeScript
+- RxJS
 
-```bash
-ng test
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── missionlist/
+│   │   ├── missionfilter/
+│   │   └── missiondetails/
+│   ├── services/
+│   │   └── spacex.service.ts
+│   ├── models/
+│   │   └── spacex.interface.ts
+│   └── ...
+└── ...
 ```
 
-## Running end-to-end tests
+## API Reference
 
-For end-to-end (e2e) testing, run:
+This project uses the SpaceX API v3:
+- GET `/launches` - Fetch all launches
+- GET `/launches?launch_year={year}` - Filter launches by year
+- GET `/launches/{flight_number}` - Get specific launch details
 
-```bash
-ng e2e
-```
+## Author
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+[Your Name]
 
-## Additional Resources
+## License
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is licensed under the MIT License.

@@ -1,0 +1,20 @@
+.filter-card {
+  margin-bottom: 20px;
+}
+
+.year-toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+mat-button-toggle {
+  margin: 4px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}
