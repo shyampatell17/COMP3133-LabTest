@@ -1,0 +1,42 @@
+<div class="mission-list-container">
+  <h1>SpaceX Mission Launch List</h1>
+  
+  <app-missionfilter (yearSelected)="onYearFilter($event)"></app-missionfilter>
+
+  <div class="mission-grid">
+    @for (mission of missions; track mission.flight_number) {
+      <mat-card class="mission-card">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img [src]="mission.links.mission_patch_small" alt="Mission Patch" class="mission-patch">
+          </div>
+          <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+          <mat-card-subtitle>Flight #{{ mission.flight_number }} - {{ mission.launch_year }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{ mission.details || 'No details available' }}</p>
+          <div class="rocket-info">
+            <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }}</p>
+            <p><strong>Type:</strong> {{ mission.rocket.rocket_type }}</p>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <a [href]="mission.links.article_link" target="_blank" mat-button>
+            <mat-icon>article</mat-icon> Article
+          </a>
+          <a [href]="mission.links.wikipedia" target="_blank" mat-button>
+            <mat-icon>language</mat-icon> Wikipedia
+          </a>
+          <a [href]="mission.links.video_link" target="_blank" mat-button>
+            <mat-icon>play_circle</mat-icon> Video
+          </a>
+          <button mat-button color="primary" (click)="viewMissionDetails(mission.flight_number)">
+            <mat-icon>info</mat-icon> Details
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</div>
